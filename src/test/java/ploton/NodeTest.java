@@ -34,17 +34,21 @@ public class NodeTest {
         actualList.add("Anapa");
         actualList.add("Adler");
 
-        actual = new Node(actualChar, actualList);
+        actual = new Node(actualChar, actualList, 2, 1, 3);
+
 
         //init expected with reflection
 
         Class nodeClass = Node.class;
         Constructor<Node> nodeConstructor = nodeClass.getConstructor(char.class, List.class);
         expected = nodeConstructor.newInstance(data, edges);
+        expected.setOutputEdges(2);
+        expected.setInputEdges(1);
+        expected.setGrade(3);
 
         System.out.println("Actual Node: " + actual);
         System.out.println("Expected Node: " + expected);
-        Assertions.assertEquals(expected,actual);
+        Assertions.assertEquals(expected, actual);
     }
 
 }
